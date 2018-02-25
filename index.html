@@ -239,6 +239,601 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/ipify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/ipify/" itemprop="url">利用ipify取得public IP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-25T21:44:39+08:00">
+                2018-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技術/" itemprop="url" rel="index">
+                    <span itemprop="name">技術</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/2018-02/ipify.png" alt="ipify"></p>
+<p><a href="https://www.ipify.org" target="_blank" rel="noopener">ipify</a>是一個可以取得public的的API<br>這是上次在看SweetAlert2範例時不小心看到的<br>ipify還提供相當多的程式語言範例，其中還可以指定以json的格式回傳資料<br>只要照著直接調用就可以了</p>
+<p>以 PHP 來說以前我的寫法和網路上網友提供的方式是這樣子的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">"HTTP_CLIENT_IP"</span>]))&#123;</span><br><span class="line">    $ip = $_SERVER[<span class="string">"HTTP_CLIENT_IP"</span>];</span><br><span class="line">&#125;<span class="keyword">elseif</span>(!<span class="keyword">empty</span>($_SERVER[<span class="string">"HTTP_X_FORWARDED_FOR"</span>]))&#123;</span><br><span class="line">    $ip = $_SERVER[<span class="string">"HTTP_X_FORWARDED_FOR"</span>];</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $ip = $_SERVER[<span class="string">"REMOTE_ADDR"</span>];</span><br><span class="line">&#125;</span><br><span class="line">     </span><br><span class="line"><span class="keyword">echo</span> $ip;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>是不是又臭又長吶!!<br>但現在直接用ipify的話直接用file_get_contents呼叫API就可以了</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $ip = file_get_contents(<span class="string">'https://api.ipify.org'</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"My public IP address is: "</span> . $ip;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>天丫!!是不是輕鬆又愉快丫！！</p>
+<p>而或是今天我想在shell script裡取得public IP在以往我肯定得再研究一番<br>但現在呢?</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">ip=$(curl -s https://api.ipify.org)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"My public IP address is: <span class="variable">$ip</span>"</span></span><br></pre></td></tr></table></figure>
+<p>總之ipify還供相當多的語言（Python、Ruby、Java、Perl、Go、JavaScript、jQuery……等）<br>初步看來官方還提供各種語言的Libraries，可以讓您直接在Project引入呼叫<br>超級無敵的吶</p>
+<p>另外官網的網址是掛載在ORG底下<br>看來應該也會是一個蠻穩定的Project<br>只是目前還不支援IPv6<br>可惜<del>可惜</del></p>
+<p>大家不妨也體驗看看吧！！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/sweetalert2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/sweetalert2/" itemprop="url">漂亮的javscript 彈跳視窗:sweetalert2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-25T11:55:09+08:00">
+                2018-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技術/" itemprop="url" rel="index">
+                    <span itemprop="name">技術</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/2018-02/swal2-logo.png" alt="sweetalert2"></p>
+<p>朋友最近介紹了一個強大的好物給我<br>這是一個兼具標亮及可自定義的 JavaScript彈跳視窗 <a href="https://sweetalert2.github.io/" target="_blank" rel="noopener">SweetAlert2</a><br>雖然我還沒開始使用<br>但光看官網的範例就已經知道他的厲害之處了<br>所以不得不上來記錄一下<br>改天要用時才不會忘記</p>
+<p>網路上順便爬了一下發現介紹文也不少<br>在vue.js上整合好像也不是問題<br>不過目前初看好像得先裝好webpack<br>但現在還沒學到webpack所以等過一陣子再來研究<br>另外官方的範例也蠻詳細的<br>所以這裡也就不多介紹了</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="[相關文章]"></a>[相關文章]</h1><ol>
+<li><a href="https://yiyingloveart.blogspot.tw/2017/09/vue-sweetalert2.html" target="_blank" rel="noopener">在 Vue 使用 SweetAlert2</a></li>
+<li><a href="https://dotblogs.com.tw/shadow/2017/10/17/130645" target="_blank" rel="noopener">[前端] 快速上手讓人驚豔的JS alert、confirm dialog - SweetAlert2 (含整合ASP.net WebForm範例碼)</a></li>
+<li><a href="http://mishengqiang.com/sweetalert2/" target="_blank" rel="noopener">SweetAlert2官方中譯版本</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/Vue.js_mapping _error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/Vue.js_mapping _error/" itemprop="url">Vue.js:Templates should only be responsible for mapping the state to the UI.</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-06T21:42:33+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技術/" itemprop="url" rel="index">
+                    <span itemprop="name">技術</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/vuejs_mapping_error.png" alt="vue.js mapping error"></p>
+<p>最近才開始研究 Vue.js<br>但因為JavaScript以前就寫的少<br>所以一切都在趺跌撞撞的狀態<br>就連芝麻小豆般的錯誤都可以debug一天一夜</p>
+<p>這二天好不容易搭配 Vue-resource 成功到後端資料庫撈出資料<br>前端也可以渲染出資料<br>但Chrome的Console就是會出現一大段的錯誤</p>
+<p><code>Templates should only be responsible for mapping the state to the UI. Avoid placing tags with side-effects in your templates, such as &lt;script&gt;, as they will not be parsed.</code></p>
+<p>上網查找了一下<br>這樣子的錯誤通常是因為HTML的標籤不成對所造的<br>所以自己再重新檢查後<br>發現我的&lt;table&gt;少了一對&lt;/table&gt;<br>補上後就好了<br>原來是自已在耍笨!!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/Laravel關閉CSRF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/Laravel關閉CSRF/" itemprop="url">Laravel關閉CSRF</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-28T22:01:42+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技術/" itemprop="url" rel="index">
+                    <span itemprop="name">技術</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/laravel_CSRF.png" alt="expect CSRF"></p>
+<p>近日有個小小project，任務很簡單：接收對方API POST過來的Data。<br>很直覺的想法就是在Laravel開個project，開個Route讓對方把資料丟到我指定的URL。<br>開好後我自己用PostMan測試了一下，發現無法接收資料，反而出現了<br>“The page has expired due to inactivity. Please refresh and try again”<br>很直覺的就想到和CSRF有關….</p>
+<p>因為 Laravel 5 在 POST、PUT、DELETE 的路由方法中，預設都會進行 CSRF Token 的檢查。<br>確認 POST 過來的資料中 _token 的資料值與 Session 中的 token 是否相符，或是驗證標頭中的 X-CSRF-TOKEN 是否相符。</p>
+<p>可是呢，我這個案子並無法直接對方對方的技術人員，僅有業務窗口，溝通上並不容易。<br>還好，這台主機對外就只為對方開放，其它的連線都是阻擋的。索性就想把這個路由的CSFR給關了!!</p>
+<p>設定方法很簡單，只要在　app/Http/Middleware/VerifyCsrfToken.php 這個檔案中把要關閉CSRF的路由加上去就可以了!!</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $except = [</span><br><span class="line">        <span class="string">'your/route'</span></span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/文青medium-VS-土炮hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -270,7 +865,7 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-13T04:52:21+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-13T00:00:21+08:00">
                 2018-01-13
               </time>
             
@@ -332,34 +927,34 @@
       
         
           
-            <h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>其實十幾年來一直使用Wordpress在寫Blog, 雖然最近這5～6年來也不怎麼在更新了，也覺得挺可惜的。<br>只是慢慢覺得Wordpress真的好肥大，前台還好，但後台的管理就顯得吃重！</p>
-<p>最近，因為工作需要想要找一個平台來撰寫系統需求，看來看去好像 Gitbook最符合我想要的。<br>順便也來玩玩MarkDown好像也不錯，無奈免費帳號無法建立Private Book…… 本來看到官網有提到可以申請<a href="https://help.gitbook.com/accounts/do-you-offer-discounts.html" target="_blank" rel="noopener">education discounts</a>，結果申請信寄出去一個星期，連個拒絕信都沒收到。</p>
-<p>最後無言間又看到FB前端群組有人在討論Hexo，然後就在前陣子小玩一下的Medium平台和Hexo之間抉擇中，把Hexo裝了起來。</p>
-<h2 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2><h5 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h5><ul>
+            <h2 id="緣由"><a href="#緣由" class="headerlink" title="緣由"></a>緣由</h2><p>其實十幾年來一直使用Wordpress在寫Blog, 雖然最近這5～6年來也不怎麼在更新了(覺得挺可惜的)。<br>只是慢慢覺得Wordpress真的好肥大，前台還好，但後台的管理就顯得吃重！</p>
+<p>最近，因為工作需要想要找一個平台來撰寫系統需求，看來看去好像 Gitbook最符合我想要的，可以順便玩玩MarkDown好像也不錯，無奈免費帳號無法建立Private Book……<br>後來在官網看到可以可以申請<a href="https://help.gitbook.com/accounts/do-you-offer-discounts.html" target="_blank" rel="noopener">education discounts</a>，結果申請信寄出去一個星期，連個拒絕信都沒收到。</p>
+<p>最後無意間看到FB前端群組有人在討論Hexo，然後就與前陣子小玩一下的Medium平台和Hexo之間抉擇中，還是把Hexo裝了起來。</p>
+<h2 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2><h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><ul>
 <li>線上編輯平台，不需架站技術</li>
 <li>隨處可編輯內容，提供手機APP </li>
 <li>可以為不同的主題建立不同的publications</li>
 </ul>
-<h5 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h5><ul>
+<h3 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h3><ul>
 <li>Markdown語法使用上卡卡的（這應該是我對MarkDown還不熟的關係）</li>
-<li>程式碼高亮功能太弱了，雖然可以插入GitHub gist或是CodePen和JSFiddle的方式處理，但實在不怎麼方便。一但編輯文章不方便，連帶的就會影響發文的動力了。</li>
+<li>程式碼高亮功能太弱了，雖然可以插入GitHub gist或是CodePen和JSFiddle的方式處理，但實在不怎麼方便。(會影響發文的動力)</li>
 </ul>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h5 id="優點-1"><a href="#優點-1" class="headerlink" title="優點"></a>優點</h5><ul>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="優點-1"><a href="#優點-1" class="headerlink" title="優點"></a>優點</h3><ul>
 <li>版面選擇性較多</li>
-<li>因為系統是建在自己的環境，其實選擇發佈出去，在本地端將Server跑起來，還是可以寫一些比較Private的文章或是文件。</li>
+<li>系統是建在自己的環境，如果不發佈出去，在localhost將Server跑起來，還是可以寫一些比較Private的文章或是文件。</li>
 <li>討論的文章很多：Medium寫的人不少，但認真爬文，文章並不多</li>
 <li>文章可以轉成靜態網頁，並發佈到GitHub（GitPages）平台去，瀏覽速度蠻快的。也不用自己架站!!</li>
 <li>好備份，因為文章的原始檔是Markdown的md檔，不需要資料庫，萬一以後出問題，很好還原！</li>
 </ul>
-<h5 id="缺點-1"><a href="#缺點-1" class="headerlink" title="缺點"></a>缺點</h5><ul>
+<h3 id="缺點-1"><a href="#缺點-1" class="headerlink" title="缺點"></a>缺點</h3><ul>
 <li>系統安裝不難，建立很快。。。 但對於系統架構的運作及流程，真的是花了我一些時間研究及除錯。</li>
 <li>Hexo實在太土炮了～～ 雖然Hexo也可以安裝後台管理套件，但實在是蠻陽春的。大部份的操作及設定都得在Command Line 及修改設定檔的方式完成</li>
 <li>系統環境受限，不方便在不同電腦上發文。得將安裝環境複制到其它電腦或是必需對Git有一定程度的操作才可以轉移。</li>
 </ul>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>這是一個簡單的初體驗，但也花了我幾天時間把玩。說實在的，並不難，大多的時間都花在排解細節和搞懂和GitHub之間的關係上。<br>其次就是想把原本在Wordpress上的陳年文章轉過來，但發現轉移的過程發現有些文章怪怪的，進而還會影響靜態網頁檔的產生。<br>最後還是暫時先放棄，等之後真的有時間再確認!!</p>
-<p>原本我是在GCP上起了一台免費的VM平台，在上面安裝Hexo，最後再發佈到GitHub，好處是，不管我在什麼電腦環境，我都可以遠端連到那台VM上撰寫文章。<br>但是，在VI裡打中文編輯長篇文章，我還是覺得太痛苦了。最後還是決定將整個環境複制到NAS上再同步到 Mac Pro，在Mac上可以用vscode編輯，再切到Command Line 發佈出去，很是方便吶!!</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>這是一個簡單的初體驗，但也花了我幾天時間讓整個站能完善。說實在的，並不難，大多的時間都花在排解細節和搞懂和GitHub之間的關係上。<br>其次就是想把原本在Wordpress上的陳年文章轉過來，但發現轉移的過程發現有些文章怪怪的，進而還會影響靜態網頁檔的產生。<br>最後還是暫時先放棄，等之後真的有時間再確認!!</p>
+<p>原本我是在GCP上起了一台免費的instance，在上面安裝Hexo，最後再發佈到GitHub。好處是，不管我在什麼電腦環境，我都可以遠端連到那台VM上撰寫文章。<br>但是，用VI打中文編輯長篇文章，還是覺得太痛苦了。最後我把整個環境複制到NAS上再同步到 Mac Pro，在Mac上可以用vscode編輯，再切到Command Line 發佈出去，很是方便吶!!</p>
 <p>這也是一個沒效率的實例，為了喝牛奶而養了頭牛。繞了一大圈，原本要寫的系統需求書，到現在還沒個影~~~ XD</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>主程式的安裝過程我就不交待了，網路上超多分享文，官網的文件也交待的很仔細。<br>倒是佈景主題與第三方套件的安裝及與Github的整合這一塊我覺得會花上一點心力。<br>以下就列出幾篇安裝過程中對我有幫助的文章，也希望日後如果重建，可以再回憶一下!!</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>主程式的安裝過程就不交待了，網路上超多分享文，官網的文件也交待的很仔細。<br>倒是佈景主題與第三方套件的安裝及與Github的整合這一塊我覺得會花上一點心力。<br>以下就列出幾篇安裝過程中對我有幫助的文章，也希望日後如果重建，可以再回憶一下!!</p>
 <ul>
 <li><a href="http://whx4j8.github.io/2016/03/16/hexo-next-%E6%B7%BB%E5%8A%A0%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB/" target="_blank" rel="noopener">hexo next 为文章添加分类</a></li>
 <li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">hexo 官方設定手冊</a></li>
@@ -455,7 +1050,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -466,7 +1061,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分類</span>
                 
               </div>
@@ -477,7 +1072,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>

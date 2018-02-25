@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Laravel," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="dowdot.me">
-<meta property="og:url" content="http://yoursite.com/tags/life/index.html">
+<meta name="description" content="近日有個小小project，任務很簡單：接收對方API POST過來的Data。很直覺的想法就是在Laravel開個project，開個Route讓對方把資料丟到我指定的URL。開好後我自己用PostMan測試了一下，發現無法接收資料，反而出現了“The page has expired due to inactivity. Please refresh and try again”很直覺的就想">
+<meta name="keywords" content="Laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel關閉CSRF">
+<meta property="og:url" content="http://yoursite.com/2018/01/Laravel關閉CSRF/index.html">
 <meta property="og:site_name" content="dowdot.me">
+<meta property="og:description" content="近日有個小小project，任務很簡單：接收對方API POST過來的Data。很直覺的想法就是在Laravel開個project，開個Route讓對方把資料丟到我指定的URL。開好後我自己用PostMan測試了一下，發現無法接收資料，反而出現了“The page has expired due to inactivity. Please refresh and try again”很直覺的就想">
 <meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/images/laravel_CSRF.png">
+<meta property="og:updated_time" content="2018-02-25T04:15:35.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dowdot.me">
+<meta name="twitter:title" content="Laravel關閉CSRF">
+<meta name="twitter:description" content="近日有個小小project，任務很簡單：接收對方API POST過來的Data。很直覺的想法就是在Laravel開個project，開個Route讓對方把資料丟到我指定的URL。開好後我自己用PostMan測試了一下，發現無法接收資料，反而出現了“The page has expired due to inactivity. Please refresh and try again”很直覺的就想">
+<meta name="twitter:image" content="http://yoursite.com/images/laravel_CSRF.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/life/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/Laravel關閉CSRF/"/>
 
 
 
 
 
-  <title>標籤: life | dowdot.me</title>
+  <title>Laravel關閉CSRF | dowdot.me</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,54 +231,188 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>life<small>標籤</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/Laravel關閉CSRF/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/01/文青medium-VS-土炮hexo/" itemprop="url">
-              
-                <span itemprop="name">文青medium VS 土炮hexo</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Laravel關閉CSRF</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-13T00:00:21+08:00"
-              content="2018-01-13" >
-          01-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-28T22:01:42+08:00">
+                2018-01-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技術/" itemprop="url" rel="index">
+                    <span itemprop="name">技術</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/Laravel關閉CSRF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/01/Laravel關閉CSRF/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/laravel_CSRF.png" alt="expect CSRF"></p>
+<p>近日有個小小project，任務很簡單：接收對方API POST過來的Data。<br>很直覺的想法就是在Laravel開個project，開個Route讓對方把資料丟到我指定的URL。<br>開好後我自己用PostMan測試了一下，發現無法接收資料，反而出現了<br>“The page has expired due to inactivity. Please refresh and try again”<br>很直覺的就想到和CSRF有關….</p>
+<p>因為 Laravel 5 在 POST、PUT、DELETE 的路由方法中，預設都會進行 CSRF Token 的檢查。<br>確認 POST 過來的資料中 _token 的資料值與 Session 中的 token 是否相符，或是驗證標頭中的 X-CSRF-TOKEN 是否相符。</p>
+<p>可是呢，我這個案子並無法直接對方對方的技術人員，僅有業務窗口，溝通上並不容易。<br>還好，這台主機對外就只為對方開放，其它的連線都是阻擋的。索性就想把這個路由的CSFR給關了!!</p>
+<p>設定方法很簡單，只要在　app/Http/Middleware/VerifyCsrfToken.php 這個檔案中把要關閉CSRF的路由加上去就可以了!!</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> $except = [</span><br><span class="line">        <span class="string">'your/route'</span></span><br><span class="line">    ];</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/文青medium-VS-土炮hexo/" rel="next" title="文青medium VS 土炮hexo">
+                <i class="fa fa-chevron-left"></i> 文青medium VS 土炮hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/Vue.js_mapping _error/" rel="prev" title="Vue.js:Templates should only be responsible for mapping the state to the UI.">
+                Vue.js:Templates should only be responsible for mapping the state to the UI. <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -279,6 +420,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -497,6 +649,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -543,6 +699,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'dowdot',
+            repo: 'dowdot',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '105f071cfa8db6a983ae5e7ca0af860fe214c521',
+            
+                client_id: '5edc4b58059b20f00ba3'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
