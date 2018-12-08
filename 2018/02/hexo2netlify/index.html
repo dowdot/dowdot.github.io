@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue.js," />
+  <meta name="keywords" content="hexo, netlify," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="最近才開始研究 Vue.js但因為JavaScript以前就寫的少所以一切都在趺跌撞撞的狀態就連芝麻小豆般的錯誤都可以debug一天一夜 這二天好不容易搭配 Vue-resource 成功到後端資料庫撈出資料前端也可以渲染出資料但Chrome的Console就是會出現一大段的錯誤 Templates should only be responsible for mapping the state">
-<meta name="keywords" content="Vue.js">
+<meta name="description" content="年前將hexo裝了起來用習慣後發現用markdown編輯文章還挺方便的最近還直接在Wordpress上裝了markdown的外掛所以我在hexo發過的文章可以直接將markdown格式直接貼進wordpress完全不用再設定文字格式超方便的啦 不過這篇主要是要分享一下怎麼將hexo托管到netlify上netlify是靜態網頁的托管網站也支援與GitHub同步而在 https://www.stat">
+<meta name="keywords" content="hexo, netlify">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js:Templates should only be responsible for mapping the state to the UI.">
-<meta property="og:url" content="http://yoursite.com/2018/02/Vue.js_mapping _error/index.html">
+<meta property="og:title" content="將hexo托管到netlify">
+<meta property="og:url" content="http://yoursite.com/2018/02/hexo2netlify/index.html">
 <meta property="og:site_name" content="dowdot.me">
-<meta property="og:description" content="最近才開始研究 Vue.js但因為JavaScript以前就寫的少所以一切都在趺跌撞撞的狀態就連芝麻小豆般的錯誤都可以debug一天一夜 這二天好不容易搭配 Vue-resource 成功到後端資料庫撈出資料前端也可以渲染出資料但Chrome的Console就是會出現一大段的錯誤 Templates should only be responsible for mapping the state">
+<meta property="og:description" content="年前將hexo裝了起來用習慣後發現用markdown編輯文章還挺方便的最近還直接在Wordpress上裝了markdown的外掛所以我在hexo發過的文章可以直接將markdown格式直接貼進wordpress完全不用再設定文字格式超方便的啦 不過這篇主要是要分享一下怎麼將hexo托管到netlify上netlify是靜態網頁的托管網站也支援與GitHub同步而在 https://www.stat">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="http://yoursite.com/images/vuejs_mapping_error.png">
-<meta property="og:updated_time" content="2018-02-25T04:17:43.321Z">
+<meta property="og:updated_time" content="2018-02-28T15:19:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js:Templates should only be responsible for mapping the state to the UI.">
-<meta name="twitter:description" content="最近才開始研究 Vue.js但因為JavaScript以前就寫的少所以一切都在趺跌撞撞的狀態就連芝麻小豆般的錯誤都可以debug一天一夜 這二天好不容易搭配 Vue-resource 成功到後端資料庫撈出資料前端也可以渲染出資料但Chrome的Console就是會出現一大段的錯誤 Templates should only be responsible for mapping the state">
-<meta name="twitter:image" content="http://yoursite.com/images/vuejs_mapping_error.png">
+<meta name="twitter:title" content="將hexo托管到netlify">
+<meta name="twitter:description" content="年前將hexo裝了起來用習慣後發現用markdown編輯文章還挺方便的最近還直接在Wordpress上裝了markdown的外掛所以我在hexo發過的文章可以直接將markdown格式直接貼進wordpress完全不用再設定文字格式超方便的啦 不過這篇主要是要分享一下怎麼將hexo托管到netlify上netlify是靜態網頁的托管網站也支援與GitHub同步而在 https://www.stat">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/Vue.js_mapping _error/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/hexo2netlify/"/>
 
 
 
 
 
-  <title>Vue.js:Templates should only be responsible for mapping the state to the UI. | dowdot.me</title>
+  <title>將hexo托管到netlify | dowdot.me</title>
   
 
 
@@ -245,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/Vue.js_mapping _error/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/hexo2netlify/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dowdot">
@@ -262,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue.js:Templates should only be responsible for mapping the state to the UI.</h1>
+          <h1 class="post-title" itemprop="name headline">將hexo托管到netlify</h1>
         
 
         <div class="post-meta">
@@ -274,8 +272,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-06T21:42:33+08:00">
-                2018-02-06
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-28T21:59:51+08:00">
+                2018-02-28
               </time>
             
 
@@ -285,28 +283,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技術/" itemprop="url" rel="index">
-                    <span itemprop="name">技術</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -315,8 +291,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/Vue.js_mapping _error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/02/Vue.js_mapping _error/" itemprop="commentsCount"></span>
+                <a href="/2018/02/hexo2netlify/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/02/hexo2netlify/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -344,11 +320,14 @@
       
 
       
-        <p><img src="/images/vuejs_mapping_error.png" alt="vue.js mapping error"></p>
-<p>最近才開始研究 Vue.js<br>但因為JavaScript以前就寫的少<br>所以一切都在趺跌撞撞的狀態<br>就連芝麻小豆般的錯誤都可以debug一天一夜</p>
-<p>這二天好不容易搭配 Vue-resource 成功到後端資料庫撈出資料<br>前端也可以渲染出資料<br>但Chrome的Console就是會出現一大段的錯誤</p>
-<p><code>Templates should only be responsible for mapping the state to the UI. Avoid placing tags with side-effects in your templates, such as &lt;script&gt;, as they will not be parsed.</code></p>
-<p>上網查找了一下<br>這樣子的錯誤通常是因為HTML的標籤不成對所造的<br>所以自己再重新檢查後<br>發現我的&lt;table&gt;少了一對&lt;/table&gt;<br>補上後就好了<br>原來是自已在耍笨!!</p>
+        <p>年前將hexo裝了起來<br>用習慣後發現用markdown編輯文章還挺方便的<br>最近還直接在Wordpress上裝了markdown的外掛<br>所以我在hexo發過的文章可以直接將markdown格式直接貼進wordpress<br>完全不用再設定文字格式<br>超方便的啦</p>
+<p>不過這篇主要是要分享一下怎麼將hexo托管到netlify上<br>netlify是靜態網頁的托管網站也支援與GitHub同步<br>而在 <a href="https://www.staticgen.com/" target="_blank" rel="noopener">https://www.staticgen.com/</a> 網站上有個強大的功能<br>就是讓你可以將hexo直接佈署到netlify上</p>
+<p>所以很多人利用staticgen將hexo佈署到netlify上之後<br>將hexo網站交由GitHub進行版本控制<br>最後再把hexo由GitHub同步到個人電腦上<br>這樣個人電腦是完全不需安裝hexo<br>之後在個人電腦撰寫好的文章時直接commit至GitHub<br>GitHub也會將文章同步到netlify</p>
+<p>但豆子的流程剛好有一點相反<br>豆子已經先在個人電腦上安裝好hexo環境<br>最後利用GitHub 將網站發佈到GitHub Pages上<br>後來發現netlify也支援Custom domain及https<br>想說那就來玩玩吧<br>網頁多放一個地方也不錯丫</p>
+<p>首先<br>您必利用GitHub登入netlify<br>之後你就可以在後台點擊「New site from Git」<br>接下來系統會列出GitHub帳號下所有的repository<br>點擊hexo那一個repository就可以完成<br>然後netlifypd也會給你一個又臭又長的domain<br>說實在的, 真的記不住吶</p>
+<p>還記得先前我們說過 netlify支援 Custom domain嗎?<br>只要到Domain Management下Add custom domain<br>指定你的domain後<br>最後將系統會給你一串DNS 的CNAME字串加到你的DNS裡<br>就大功告成啦</p>
+<p>另外,你也可以進一步開啟Https的功能<br>但因為簽發的是免費的Let’s Encrypt<br>憑證只有3個月的有效期<br>之後要去更新, 有點麻煩就是……</p>
+<p><a href="https://www.freehao123.com/netlify/" target="_blank" rel="noopener">https://www.freehao123.com/netlify/</a></p>
 
       
     </div>
@@ -366,7 +345,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
+            <a href="/tags/hexo-netlify/" rel="tag"># hexo, netlify</a>
           
         </div>
       
@@ -379,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/Laravel關閉CSRF/" rel="next" title="Laravel關閉CSRF">
-                <i class="fa fa-chevron-left"></i> Laravel關閉CSRF
+              <a href="/2018/02/ipify/" rel="next" title="利用ipify取得public IP">
+                <i class="fa fa-chevron-left"></i> 利用ipify取得public IP
               </a>
             
           </div>
@@ -389,8 +368,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/sweetalert2/" rel="prev" title="漂亮的javscript 彈跳視窗:sweetalert2">
-                漂亮的javscript 彈跳視窗:sweetalert2 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/Script/" rel="prev" title="Laravel環境下,讓Postfix Server收到信觸發PHP Script">
+                Laravel環境下,讓Postfix Server收到信觸發PHP Script <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

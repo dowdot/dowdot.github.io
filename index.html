@@ -239,6 +239,266 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/Script/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/Script/" itemprop="url">Laravel環境下,讓Postfix Server收到信觸發PHP Script</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-03-16T13:37:06+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>會有這篇文章的產生，是因為工作環境中有一台簡訊機，主要在設備故障時寄發告警簡訊使用。這台簡訊機有個好用的功能，就是支援E-mail格式傳送簡訊。<br>例如，只要將寄發的內容傳送到0912345678@xxx.xxx.xxx，簡訊機就能幫信件內容轉成簡訊寄發到0912345678。<br>挺方便的!!</p>
+<p>只是,無奈這台簡訊機只支援3G的SIM卡,偏偏台灣3G的執照將在今年底到期,也就是說過了今年,這台簡訊機就爛掉了!!</p>
+<p>所以, 想了一下,如果自己也能夠架台Mail Server,當收到Mail時也去觸發程式,那麼可以做的事情可就多了….<br>可以去接第3方的網路簡訊API,也可以將抓到的訊息利用LineBOT達到告警功能,是不?!</p>
+<p>沒想到,還真讓我給試了出來,那麼就來記錄一下過程吧!!</p>
+<h1 id="設定Postfix"><a href="#設定Postfix" class="headerlink" title="設定Postfix"></a>設定Postfix</h1><p>(這一段主要是參照 David Négrier 的文章)<br>在/etc/postfix/master.cf 註冊一個名字為 triggerhook的script</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">triggerhook unix - n n - - pipe</span><br><span class="line">  flags=F user=www-data argv=/path/to/postfix.php <span class="variable">$&#123;sender&#125;</span> <span class="variable">$&#123;size&#125;</span> <span class="variable">$&#123;recipient&#125;</span></span><br></pre></td></tr></table></figure>
+<p>並且修正 smtp 區段讓Postfix知道在mail經由SMTP送達時執行triggerhook</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">smtp      inet  n       -       -       -       -       smtpd</span><br><span class="line">        -o content_filter=triggerhook:dummy</span><br></pre></td></tr></table></figure>
+<p>如果你是用senmail指令進行測試的話,上面的區段是不會被trigger 的,所以可以在pickup delivery method下再增加option</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pickup    fifo  n       -       -       60      1       pickup</span><br><span class="line">    -o content_filter=triggerhook:dummy</span><br></pre></td></tr></table></figure>
+<p>改完之後,記得進行 postfix reload 讓設定生效</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="[相關文章]"></a>[相關文章]</h1><ol>
+<li><a href="https://thecodingmachine.io/triggering-a-php-script-when-your-postfix-server-receives-a-mailhttps://thecodingmachine.io/triggering-a-php-script-when-your-postfix-server-receives-a-mail" target="_blank" rel="noopener">TRIGGERING A PHP SCRIPT WHEN YOUR POSTFIX SERVER RECEIVES A MAIL</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/hexo2netlify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dowdot">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4746.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="dowdot.me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/hexo2netlify/" itemprop="url">將hexo托管到netlify</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-28T21:59:51+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>年前將hexo裝了起來<br>用習慣後發現用markdown編輯文章還挺方便的<br>最近還直接在Wordpress上裝了markdown的外掛<br>所以我在hexo發過的文章可以直接將markdown格式直接貼進wordpress<br>完全不用再設定文字格式<br>超方便的啦</p>
+<p>不過這篇主要是要分享一下怎麼將hexo托管到netlify上<br>netlify是靜態網頁的托管網站也支援與GitHub同步<br>而在 <a href="https://www.staticgen.com/" target="_blank" rel="noopener">https://www.staticgen.com/</a> 網站上有個強大的功能<br>就是讓你可以將hexo直接佈署到netlify上</p>
+<p>所以很多人利用staticgen將hexo佈署到netlify上之後<br>將hexo網站交由GitHub進行版本控制<br>最後再把hexo由GitHub同步到個人電腦上<br>這樣個人電腦是完全不需安裝hexo<br>之後在個人電腦撰寫好的文章時直接commit至GitHub<br>GitHub也會將文章同步到netlify</p>
+<p>但豆子的流程剛好有一點相反<br>豆子已經先在個人電腦上安裝好hexo環境<br>最後利用GitHub 將網站發佈到GitHub Pages上<br>後來發現netlify也支援Custom domain及https<br>想說那就來玩玩吧<br>網頁多放一個地方也不錯丫</p>
+<p>首先<br>您必利用GitHub登入netlify<br>之後你就可以在後台點擊「New site from Git」<br>接下來系統會列出GitHub帳號下所有的repository<br>點擊hexo那一個repository就可以完成<br>然後netlifypd也會給你一個又臭又長的domain<br>說實在的, 真的記不住吶</p>
+<p>還記得先前我們說過 netlify支援 Custom domain嗎?<br>只要到Domain Management下Add custom domain<br>指定你的domain後<br>最後將系統會給你一串DNS 的CNAME字串加到你的DNS裡<br>就大功告成啦</p>
+<p>另外,你也可以進一步開啟Https的功能<br>但因為簽發的是免費的Let’s Encrypt<br>憑證只有3個月的有效期<br>之後要去更新, 有點麻煩就是……</p>
+<p><a href="https://www.freehao123.com/netlify/" target="_blank" rel="noopener">https://www.freehao123.com/netlify/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/ipify/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1050,7 +1310,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1072,7 +1332,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
